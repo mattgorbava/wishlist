@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { User } from 'src/app/interfaces/auth';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +20,23 @@ export class RegisterComponent {
       validator: this.mustMatch('password', 'confirmPassword')
     });
   
-    constructor(private fb: FormBuilder) { }
+    constructor(
+      private fb: FormBuilder,
+      private authService: AuthService, 
+      private messageService: MessageService,
+      private router: Router) { }
+
+    onSubmit() {
+      const postData = {...this.registerForm.value};
+      delete postData.confirmPassword;
+      this.authService.registerUser(postData as User).subscribe((response) => {
+        console.log(response);
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'User registered successfully'});
+        this.router.navigate(['/login']);
+      } , (error) => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'User registration failed'});
+      });
+    }
   
     get fullName() {
       return this.registerForm.controls['fullName'];
