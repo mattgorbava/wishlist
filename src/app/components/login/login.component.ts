@@ -23,7 +23,6 @@ export class LoginComponent {
         sessionStorage.setItem('email', email as string);
         this.router.navigate(['/home']);
       }
-      console.log(response);
     });
   }
 
