@@ -4,15 +4,18 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { authGuard } from './guards/auth.guard';
+import { loginpageGuard } from './guards/loginpage.guard';
 
 const routes: Routes = [
   {
     path: 'login', 
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [loginpageGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [loginpageGuard]
   },
   {
     path: 'home',

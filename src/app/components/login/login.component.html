@@ -33,6 +33,10 @@
                     </div>
             </small>
         </div>
+        <div class="field-checkbox mt-2">
+            <p-checkbox inputId="rememberMe" formControlName="rememberMe" label="Remember me" [binary]="true"></p-checkbox>
+        </div>
+
         <p-button type="submit" label="Login" class="w-full" [disabled]="loginForm.invalid"></p-button>
         <div class="mt-4">
             Don't have an account? 
