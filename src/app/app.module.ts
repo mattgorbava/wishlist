@@ -12,16 +12,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeModule } from './home/home.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +29,9 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
-    CheckboxModule
+    CheckboxModule,
+    HomeModule,
+    AuthModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
