@@ -1,0 +1,107 @@
+<form [formGroup]="itemForm" (ngSubmit)="editItem()">
+    <p-card>
+        <input type="hidden" name="id" [value]="itemId">
+        <div class="field">
+            <label for="name">Name</label>
+            <input
+                type="text"
+                id="name"
+                pInputText
+                formControlName="name"
+                class="w-full"
+                placeholder="Enter item name"
+                required
+            />
+            <small *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="block p-error mb-3">
+                <div>
+                    <div *ngIf="name.errors?.['required']">
+                        Name is required
+                    </div>
+                </div>
+            </small>
+        </div>
+        <div class="field">
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                pInputTextarea
+                formControlName="description"
+                class="w-full"
+                placeholder="Enter item description"
+                required
+            ></textarea>
+            <small *ngIf="description.invalid && (description.dirty || description.touched)"
+                class="block p-error mb-3">
+                <div>
+                    <div *ngIf="description.errors?.['required']">
+                        Description is required
+                    </div>
+                </div>
+            </small>
+        </div>
+        <div class="field">
+            <label for="price">Price</label>
+            <input
+                type="number"
+                id="price"
+                pInputText
+                formControlName="price"
+                class="w-full"
+                placeholder="Enter item price"
+                required
+            />
+            <small *ngIf="price.invalid && (price.dirty || price.touched)"
+                class="block p-error mb-3">
+                <div>
+                    <div *ngIf="price.errors?.['required']">
+                        Price is required
+                    </div>
+                </div>
+            </small>
+        </div>
+        <div class="field">
+            <label for="rating">Rating</label>
+            <input
+                type="number"
+                id="rating"
+                pInputText
+                formControlName="rating"
+                class="w-full"
+                placeholder="Enter item rating"
+                required
+            />
+            <small *ngIf="rating.invalid && (rating.dirty || rating.touched)"
+                class="block p-error mb-3">
+                <div>
+                    <div *ngIf="rating.errors?.['required']">
+                        Rating is required
+                    </div>
+                </div>
+            </small>
+        </div>
+        <div>
+            <label for="image">Image</label>
+            <input
+                type="text"
+                id="image"
+                pInputText
+                formControlName="image"
+                class="w-full"
+                placeholder="Enter item image URL"
+                required
+            />
+            <small *ngIf="image.invalid && (image.dirty || image.touched)"
+                class="block p-error mb-3">
+                <div>
+                    <div *ngIf="image.errors?.['required']">
+                        Image is required
+                    </div>
+                </div>
+            </small>
+        </div>
+        <div class="mt-4"> 
+            <p-button type="submit" label="Edit Item" class="w-full" [disabled]="itemForm.invalid"></p-button>
+        </div>
+    </p-card>
+</form>

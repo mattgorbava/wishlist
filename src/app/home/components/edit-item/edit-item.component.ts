@@ -1,26 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ItemsService } from '../../services/items.service';
-import { Item } from '../../interfaces/item';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/interfaces/auth';
+import { Item } from '../../interfaces/item';
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.scss']
+  selector: 'app-edit-item',
+  templateUrl: './edit-item.component.html',
+  styleUrls: ['./edit-item.component.scss']
 })
-export class AddItemComponent implements OnInit{
-  constructor(private fb: FormBuilder, 
+export class EditItemComponent implements OnInit {
+  constructor(
+    private fb: FormBuilder, 
     private itemsService: ItemsService, 
     private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute
+  ) {}
 
-  userId: string = '';
+  itemId!: string;
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.userId = params['userId'];
+    this.route.paramMap.subscribe(params => {
+      this.itemId = params.get('id')!;
+      if (this.itemId) {
+        this.loadItemData();
+      }
     });
   }
 
@@ -32,11 +36,11 @@ export class AddItemComponent implements OnInit{
     image: ['']
   });
 
-  addItem() {
+  editItem() {
     const values = this.itemForm.value;
     
-    this.itemsService.addItem(
-      this.userId,
+    this.itemsService.editItem(
+      this.itemId,
       values.name!,
       values.description!,
       parseFloat(values.price!), 
@@ -47,6 +51,18 @@ export class AddItemComponent implements OnInit{
     });
 
     this.router.navigate(['/home/items']);
+  }
+
+  loadItemData(): void {
+    this.itemsService.getItemById(this.itemId).subscribe(item => {
+      this.itemForm.patchValue({
+        name: item.name,
+        description: item.description,
+        price: item.price.toString(),
+        rating: item.rating.toString(),
+        image: item.image
+      });
+    });
   }
 
   get name() { return this.itemForm.get('name') as FormControl; }

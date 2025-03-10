@@ -1,0 +1,19 @@
+    <td width="40%">
+        <div class="display-flex align-center">
+            <div class="img-product">
+                <img [src]="item.image" alt="" class="img-product">
+            </div>
+            <div class="name-product">
+                {{item.name}}
+            </div>
+        </div>
+    </td>
+    <td width="15%" class="price">{{item.price}} Lei</td>
+    <td width="15%">{{item.description}}</td>
+    <td width="15%">{{item.rating}}/5</td>
+    <td width="8%">
+        <button class="round-black-btn" (click)="onEditClick()">Edit item</button>
+    </td>
+    <td width="7%">
+        <button class="round-black-btn" (click)="onDeleteClick()">Delete item</button>
+    </td>

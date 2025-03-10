@@ -7,33 +7,35 @@
 		<div class="container-fluid">
 	        <div class="row">
 			    <div class="col-md-12" *ngIf="items.length !== 0">
-			        <div class="main-heading mb-10">My wishlist</div>
+			        <div class="main-heading mb-10">{{fullName}}'s wishlist</div>
 			        <div class="table-wishlist">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
 				        	<thead>
 					        	<tr>
 					        		<th width="40%">Product</th>
-					        		<th width="20%">Unit Price</th>
-					        		<th width="20%">Description</th>
-					        		<th width="20%">Rating</th>
+					        		<th width="15%">Unit Price</th>
+					        		<th width="15%">Description</th>
+					        		<th width="15%">Rating</th>
+									<th width="15%"></th>
 					        	</tr>
 					        </thead>
 					        <tbody>
-					        	<tr *ngFor="let item of items">
-					        		<td width="45%">
+								<tr>
+					        		<td width="40%">
 					        			<div class="display-flex align-center">
 		                                    <div class="img-product">
-		                                        <img (src)="item.image" alt="" class="mCS_img_loaded">
+		                                        <img src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg" alt="" class="mCS_img_loaded">
 		                                    </div>
 		                                    <div class="name-product">
-		                                        {{item.name}}
+		                                        Apple Macbook Air
 		                                    </div>
 	                                    </div>
 	                                </td>
-					        		<td width="15%" class="price">{{item.price}} Lei</td>
-					        		<td width="15%">{{item.description}}</td>
-									<td width="15%">{{item.rating}}/5</td>
+					        		<td width="20%" class="price">1500 Lei</td>
+					        		<td width="20%">Laptop Apple cu logo Asus</td>
+					        		<td width="20%">4.9/5</td>
 					        	</tr>
+								<tr *ngFor="let item of items" app-item [item]="item" (itemDeleted)="deleteItem(item.id)" (itemEdited)="editItem(item.id)"></tr>
 				        	</tbody>
 				        </table>
 				    </div>
@@ -46,5 +48,8 @@
 			</div>
 			<button class="btn btn-primary" (click)="navigateToAddItem()">Add item</button>
 		</div>
+	</div>
+	<div class="logout-container">
+		<button class="btn btn-primary" (click)="logOut()">Log out</button>
 	</div>
 	

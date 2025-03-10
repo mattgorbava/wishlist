@@ -5,24 +5,29 @@
       "fullName": "testuser",
       "email": "email@email.com",
       "password": "parola1A"
+    },
+    {
+      "id": "646c",
+      "fullName": "testuser2",
+      "email": "email2@email.com",
+      "password": "parola1A"
+    },
+    {
+      "id": "3d5d",
+      "fullName": "testuser3",
+      "email": "email3@email.com",
+      "password": "parola1A"
     }
   ],
   "items": [
     {
-      "id": "878b",
-      "name": "Google Pixel 9 Pro",
+      "userId": "e196",
+      "name": "Google Pixel 9 ",
       "description": "Cel mai top telefon Google",
       "price": 4686.86,
       "rating": 4.45,
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-9-pro-.jpg"
-    },
-    {
-      "id": "75ee",
-      "name": "iPhone 16 Pro",
-      "description": "Cel mai top telefon Apple",
-      "price": 5509.34,
-      "rating": 4.72,
-      "image": "https://www.apple.com/newsroom/images/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/article/Apple-iPhone-16-Pro-hero-geo-240909_inline.jpg.large.jpg"
+      "image": "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-9-pro-.jpg",
+      "id": "878b"
     }
   ]
 }

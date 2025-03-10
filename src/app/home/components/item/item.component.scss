@@ -1,20 +1,3 @@
-@import "primeicons/primeicons.css";
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-.auth-card {
-    width: 360px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
 .cart-wrap {
 	padding: 40px 0;
 	font-family: 'Open Sans', sans-serif;
@@ -23,45 +6,45 @@ body {
 	font-size: 19px;
 	margin-bottom: 20px;
 }
-.table-wishlist table {
+ table {
     width: 100%;
 }
-.table-wishlist thead {
+ thead {
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 5px;
     padding: 20px;
 }
-.table-wishlist thead tr th {
+ thead tr th {
     padding: 8px 0 18px;
     color: #484848;
     font-size: 15px;
     font-weight: 400;
 }
-.table-wishlist tr td {
+ tr td {
     padding: 25px;
     vertical-align: middle;
 }
-.table-wishlist tr td .img-product {
+ tr td .img-product {
     width: 72px;
     float: left;
     margin-left: 8px;
     margin-right: 31px;
     line-height: 63px;
 }
-.table-wishlist tr td .img-product img {
+tr td .img-product img {
 	width: 100%;
 }
-.table-wishlist tr td .name-product {
+tr td .name-product {
     font-size: 15px;
     color: #484848;
     padding-top: 8px;
     line-height: 24px;
     width: 50%;
 }
-.table-wishlist tr td.price {
+ tr td.price {
     font-weight: 600;
 }
-.table-wishlist tr td .quanlity {
+ tr td .quanlity {
     position: relative;
 }
 
@@ -145,6 +128,15 @@ body {
 }
 .in-stock-box {
 	background: #ff0000;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 25px;
+	padding: 4px 15px;
+	display: inline-block;  
+    color: #fff;
+}
+.delete-button {
+    background: #ff0000;
 	font-size: 12px;
 	text-align: center;
 	border-radius: 25px;

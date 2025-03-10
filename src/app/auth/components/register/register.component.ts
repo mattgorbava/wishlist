@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { User } from 'src/app/interfaces/auth';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -29,12 +29,19 @@ export class RegisterComponent {
     onSubmit() {
       const postData = {...this.registerForm.value};
       delete postData.confirmPassword;
-      this.authService.registerUser(postData as User).subscribe((response) => {
-        console.log(response);
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'User registered successfully'});
-        this.router.navigate(['/login']);
-      } , (error) => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'User registration failed'});
+      this.authService.checkEmailExists(postData.email).subscribe((exists) => {
+        if (exists) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Email already exists' });
+        } else {
+          this.authService.registerUser(postData as User).subscribe((response) => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User registered successfully' });
+            this.router.navigate(['/login']);
+          }, (error) => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'User registration failed' });
+          });
+        }
+      }, (error) => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error checking email' });
       });
     }
   
