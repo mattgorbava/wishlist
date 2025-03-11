@@ -21,13 +21,31 @@
   ],
   "items": [
     {
-      "userId": "e196",
-      "name": "Google Pixel 9 ",
+      "id": "f55d",
+      "name": "Google Pixel 9 Pro",
       "description": "Cel mai top telefon Google",
-      "price": 4686.86,
-      "rating": 4.45,
+      "price": 4600,
+      "rating": 4.99,
       "image": "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-9-pro-.jpg",
-      "id": "878b"
+      "formatDate": "2025-03-10"
+    },
+    {
+      "id": "bea7",
+      "name": "iPhone 16 Pro",
+      "description": "Cel mai top telefon Appel",
+      "price": 6000,
+      "rating": 4.99,
+      "image": "https://freemans.scene7.com/is/image/OttoUK/600w/Apple-iPhone-16-Pro-Max-256GB-Natural-Titanium~60X460FRSP.jpg",
+      "formatDate": "2025-03-10"
+    },
+    {
+      "id": "1c00",
+      "name": "Samsung Galaxy S24 Ultra",
+      "description": "Cel mai top telefon Samsung",
+      "price": 5500,
+      "rating": 4.65,
+      "image": "https://www.dxomark.com/wp-content/uploads/medias/post-164446/Samsung-Galaxy-S24-Ultra_A_featured-image-packshot-review.jpg",
+      "formatDate": "2025-03-10"
     }
   ]
 }

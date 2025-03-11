@@ -4,6 +4,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -26,7 +27,8 @@ import { ItemComponent } from './components/item/item.component';
     ButtonModule,
     ReactiveFormsModule,
     CardModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

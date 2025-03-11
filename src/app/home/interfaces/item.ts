@@ -6,4 +6,5 @@ export interface Item {
     description: string;
     rating: number;
     image: string;
+    formatDate: Date;
 }

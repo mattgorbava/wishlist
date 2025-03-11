@@ -7,34 +7,38 @@
 		<div class="container-fluid">
 	        <div class="row">
 			    <div class="col-md-12" *ngIf="items.length !== 0">
-			        <div class="main-heading mb-10">{{fullName}}'s wishlist</div>
-			        <div class="table-wishlist">
+			        <div class="d-flex justify-content-between align-items-center mb-10">
+						<div class="main-heading">{{fullName}}'s wishlist</div>
+						<div class="d-flex align-items-center">
+							<div class="search-container d-flex">
+								<input type="text" class="form-control" placeholder="Search for items" #filter style="width: 200px; margin-right: 10px;"/>
+								<button class="btn btn-primary" (click)="searchItems(filter.value)">Search</button>
+							</div>
+							<div class="sort-container d-flex align-items-center ml-3">
+								<label for="sort" class="mr-2">Sort by:</label>
+								<select id="sort" class="form-control" [(ngModel)]="sortBy" (change)="sortItems()">
+									<option value="name">Product Name</option>
+									<option value="price">Unit Price</option>
+									<option value="description">Description</option>
+									<option value="rating">Rating</option>
+									<option value="dateAdded">Date Added</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="table-wishlist">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
 				        	<thead>
 					        	<tr>
-					        		<th width="40%">Product</th>
+					        		<th width="30%">Product</th>
 					        		<th width="15%">Unit Price</th>
 					        		<th width="15%">Description</th>
 					        		<th width="15%">Rating</th>
+									<th width="10%">Date added</th>
 									<th width="15%"></th>
 					        	</tr>
 					        </thead>
 					        <tbody>
-								<tr>
-					        		<td width="40%">
-					        			<div class="display-flex align-center">
-		                                    <div class="img-product">
-		                                        <img src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg" alt="" class="mCS_img_loaded">
-		                                    </div>
-		                                    <div class="name-product">
-		                                        Apple Macbook Air
-		                                    </div>
-	                                    </div>
-	                                </td>
-					        		<td width="20%" class="price">1500 Lei</td>
-					        		<td width="20%">Laptop Apple cu logo Asus</td>
-					        		<td width="20%">4.9/5</td>
-					        	</tr>
 								<tr *ngFor="let item of items" app-item [item]="item" (itemDeleted)="deleteItem(item.id)" (itemEdited)="editItem(item.id)"></tr>
 				        	</tbody>
 				        </table>

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { ItemsService } from '../../services/items.service';
 import { Item } from '../../interfaces/item';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/interfaces/auth';
+import { User } from 'src/app/auth/interfaces/auth';
 
 @Component({
   selector: 'app-add-item',

@@ -20,6 +20,7 @@ export class ItemsListComponent {
   items: Item[] = [];
   email: string = sessionStorage.getItem('email')! || localStorage.getItem('email')!;
   fullName: string = '';
+  sortBy: string = '';
 
   deleteItemForm = this.fb.group({
     id: ['']
@@ -41,7 +42,7 @@ export class ItemsListComponent {
   navigateToAddItem(): void {
     const email = sessionStorage.getItem('email') || localStorage.getItem('email');
     this.authService.getUserByEmail(email!).subscribe((data) => {
-      this.router.navigate(['/home/items/add'], { state: { user: data[0] } });
+      this.router.navigate(['/home/items/add', data[0].id]);
     });
   }
 
@@ -59,5 +60,35 @@ export class ItemsListComponent {
     sessionStorage.clear();
     localStorage.clear();
     this.router.navigate(['/login']);
+  }
+
+  searchItems(filter: string): void {
+    if (filter.length !== 0) {
+      if (this.items.filter(item => item.name.toLowerCase().includes(filter.toLowerCase())).length !== 0) {
+        this.items = this.items.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
+      } else {
+        return;
+      }
+    } else {
+      this.authService.getUserByEmail(this.email!).subscribe((data) => {
+        this.itemsService.getUserItems(data[0].id).subscribe((data: Item[]) => {
+          this.items = data;
+        });
+      });
+    }
+  }
+
+  sortItems(): void {
+    if (this.sortBy === 'name') {
+      this.items.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (this.sortBy === 'price') {
+      this.items.sort((a, b) => a.price - b.price);
+    } else if (this.sortBy === 'rating') {
+      this.items.sort((a, b) => a.rating - b.rating);
+    } else if (this.sortBy === 'date') {
+      this.items.sort((a, b) => new Date(b.formatDate).getTime() - new Date(a.formatDate).getTime());
+    } else if (this.sortBy === 'description') {
+      this.items.sort((a, b) => a.description.localeCompare(b.description));
+    }
   }
 }
